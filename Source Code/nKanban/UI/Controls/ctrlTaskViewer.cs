@@ -3,13 +3,6 @@
 
 using nKanban.Models;
 using nKanban.Properties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 namespace nKanban.UI
 {
@@ -27,14 +20,14 @@ namespace nKanban.UI
 
                 if (_IsCollapsed)
                 {
-                    btnContentView.Image = Resources.closed_32;
+                    btnContentView.Image = Resources.Arrow_Right_32;
                     pnlBody.Visible = true;
                     lblTitle.Text = txtTitle.Text;
                     this.Height = pnlHeader.Height;
                 }
                 else
                 {
-                    btnContentView.Image = Resources.opened_32;
+                    btnContentView.Image = Resources.Arrow_DOWN32;
                     lblTitle.Text = null;
                     pnlBody.Visible = true;
                     this.Height = _OriginalSize.Height;
@@ -44,7 +37,6 @@ namespace nKanban.UI
             get { return _IsCollapsed; }
         }
 
-        
         public string TaskTitle
         {
             set { txtTitle.Text = value; }
@@ -65,7 +57,6 @@ namespace nKanban.UI
             set { txtDescription.Text = value; }
             get { return txtDescription.Text; }
         }
-
 
         public ctrlTaskViewer(TaskDetails details)
         {
@@ -88,7 +79,7 @@ namespace nKanban.UI
             foreach (Control control in parent.Controls)
             {
 
-                if (control is Panel ||control is GroupBox || control is Label)
+                if (control is Panel || control is GroupBox || control is Label)
                 {
                     control.MouseDown += new MouseEventHandler(ctrlTaskViewer_MouseDown);
                     if (control.HasChildren)
@@ -98,6 +89,7 @@ namespace nKanban.UI
                 }
             }
         }
+
 
         private void btnContentView_Click(object sender, EventArgs e)
         {
@@ -111,5 +103,6 @@ namespace nKanban.UI
                 this.DoDragDrop(this, DragDropEffects.Move);
             }
         }
+
     }
 }

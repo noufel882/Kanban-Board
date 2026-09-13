@@ -1,6 +1,6 @@
 ﻿namespace nKanban
 {
-    partial class frmAddTask
+    partial class frmAddEditTask
     {
         /// <summary>
         /// Required designer variable.
@@ -115,9 +115,8 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
-            // frmAddTask
+            // frmAddEditTask
             // 
-            AcceptButton = btnConfirm;
             AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(688, 754);
@@ -131,7 +130,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Name = "frmAddTask";
+            Name = "frmAddEditTask";
             ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;

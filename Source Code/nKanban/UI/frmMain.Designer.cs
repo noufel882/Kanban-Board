@@ -38,14 +38,14 @@
             pnlDone = new nKanban.UI.Controls.ctrlPanel();
             pnlBoard = new TableLayoutPanel();
             pnlTools = new Panel();
-            btnDeleteTask = new nKanban.UI.Controls.ctrlDeleteButton();
+            ctrlDeleteButton1 = new nKanban.UI.Controls.ctrlDeleteButton();
             pnlBoard.SuspendLayout();
             pnlTools.SuspendLayout();
             SuspendLayout();
             // 
             // btnAddTask
             // 
-            btnAddTask.Location = new Point(9, 11);
+            btnAddTask.Location = new Point(8, 11);
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(78, 46);
             btnAddTask.TabIndex = 0;
@@ -151,7 +151,7 @@
             // 
             // pnlTools
             // 
-            pnlTools.Controls.Add(btnDeleteTask);
+            pnlTools.Controls.Add(ctrlDeleteButton1);
             pnlTools.Controls.Add(btnAddTask);
             pnlTools.Dock = DockStyle.Top;
             pnlTools.Location = new Point(0, 0);
@@ -159,17 +159,14 @@
             pnlTools.Size = new Size(1694, 71);
             pnlTools.TabIndex = 11;
             // 
-            // btnDeleteTask
+            // ctrlDeleteButton1
             // 
-            btnDeleteTask.AllowDrop = true;
-            btnDeleteTask.BackgroundImage = (Image)resources.GetObject("btnDeleteTask.BackgroundImage");
-            btnDeleteTask.BackgroundImageLayout = ImageLayout.Center;
-            btnDeleteTask.FlatStyle = FlatStyle.Flat;
-            btnDeleteTask.Location = new Point(105, 11);
-            btnDeleteTask.Name = "btnDeleteTask";
-            btnDeleteTask.Size = new Size(75, 48);
-            btnDeleteTask.TabIndex = 1;
-            btnDeleteTask.UseVisualStyleBackColor = true;
+            ctrlDeleteButton1.Image = (Image)resources.GetObject("ctrlDeleteButton1.Image");
+            ctrlDeleteButton1.Location = new Point(107, 5);
+            ctrlDeleteButton1.Name = "ctrlDeleteButton1";
+            ctrlDeleteButton1.Size = new Size(60, 60);
+            ctrlDeleteButton1.TabIndex = 1;
+            ctrlDeleteButton1.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
@@ -200,6 +197,6 @@
         private UI.Controls.ctrlPanel pnlDone;
         private TableLayoutPanel pnlBoard;
         private Panel pnlTools;
-        private UI.Controls.ctrlDeleteButton btnDeleteTask;
+        private UI.Controls.ctrlDeleteButton ctrlDeleteButton1;
     }
 }

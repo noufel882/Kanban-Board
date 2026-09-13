@@ -1,21 +1,24 @@
 using nKanban.Models;
 using nKanban.UI;
+using static nKanban.Models.Global;
 
 namespace nKanban
 {
     public partial class frmMain : Form
     {
+        
         public frmMain()
         {
             InitializeComponent();
+            CurrentBoard = new([pnlToDo,pnlInProgress,pnlDone]);
         }
 
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            using (var addTaskForm = new frmAddTask())
+            using (var addTaskForm = new frmAddEditTask())
             {
-                addTaskForm.AddTaskDelegate += AddTask;
+                addTaskForm.TaskAdded += AddTask;
                 addTaskForm.ShowDialog();
             }
         }
@@ -23,22 +26,7 @@ namespace nKanban
 
         private void AddTask(object sender, TaskDetails task)
         {
-            var taskItem = new ctrlTaskViewer(task);
-
-            switch (task.TaskStatus)
-            {
-                case "To Do":
-                    pnlToDo.Controls.Add(taskItem);
-                    break;
-                case "In Progress":
-                    pnlInProgress.Controls.Add(taskItem);
-                    break;
-                case "Done":
-                    pnlDone.Controls.Add(taskItem);
-                    break;
-            }
-
-
+            CurrentBoard.AddTask(task);
         }
 
     }

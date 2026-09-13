@@ -1,28 +1,23 @@
 ﻿using nKanban.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 namespace nKanban
 {
-    public partial class frmAddTask : Form
+    public partial class frmAddEditTask : Form
     {
-        public event EventHandler<TaskDetails> AddTaskDelegate;
+        public event EventHandler<TaskDetails> TaskAdded;
 
-        protected void AddNewTask(TaskDetails task)
+        protected void OnNewTaskAdded(TaskDetails task)
         {
-            var handler = AddTaskDelegate;
+            var handler = TaskAdded;
             handler?.Invoke(this, task);
-        }   
+        }
 
-        public frmAddTask()
+     
+        public frmAddEditTask()
         {
             InitializeComponent();
             cbTaskStatus.SelectedIndex = 0; // Set default selection to "To Do"
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -32,9 +27,9 @@ namespace nKanban
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(txtTitle.Text))
+            if (string.IsNullOrWhiteSpace(txtTitle.Text))
             {
-                MessageBox.Show("The task title is require !","Note",MessageBoxButtons.OK);
+                MessageBox.Show("The task title is require !", "Note", MessageBoxButtons.OK);
                 return;
             }
 
@@ -42,11 +37,13 @@ namespace nKanban
             {
                 TaskName = txtTitle.Text,
                 TaskDescription = txtDescription.Text,
-                TaskStatus = cbTaskStatus.SelectedItem.ToString()
+                TaskStatus = (string)cbTaskStatus.SelectedItem
             };
 
-            AddNewTask(newTask);
+            OnNewTaskAdded(newTask);
             this.Close();
+
         }
+
     }
 }

@@ -63,9 +63,9 @@ namespace nKanban.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap closed_32 {
+        internal static System.Drawing.Bitmap Arrow_DOWN32 {
             get {
-                object obj = ResourceManager.GetObject("closed_32", resourceCulture);
+                object obj = ResourceManager.GetObject("Arrow_DOWN32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace nKanban.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap opened_32 {
+        internal static System.Drawing.Bitmap Arrow_Right_32 {
             get {
-                object obj = ResourceManager.GetObject("opened_32", resourceCulture);
+                object obj = ResourceManager.GetObject("Arrow_Right_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace nKanban.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap recycle_bin_32 {
+        internal static System.Drawing.Bitmap Closed_Recycle_Bin_32 {
             get {
-                object obj = ResourceManager.GetObject("recycle bin 32", resourceCulture);
+                object obj = ResourceManager.GetObject("Closed_Recycle_Bin 32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace nKanban.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap recycle_bin_321 {
+        internal static System.Drawing.Bitmap Opened_Recycle_Bin_32 {
             get {
-                object obj = ResourceManager.GetObject("recycle bin 321", resourceCulture);
+                object obj = ResourceManager.GetObject("Opened_Recycle_Bin 32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
