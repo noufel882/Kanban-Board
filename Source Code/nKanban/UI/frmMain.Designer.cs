@@ -28,18 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             btnAddTask = new Button();
-            pnlToDo = new FlowLayoutPanel();
-            pnlInProgress = new FlowLayoutPanel();
-            pnlDone = new FlowLayoutPanel();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            pnlToDo = new nKanban.UI.Controls.ctrlPanel();
+            pnlInProgress = new nKanban.UI.Controls.ctrlPanel();
+            pnlDone = new nKanban.UI.Controls.ctrlPanel();
+            pnlBoard = new TableLayoutPanel();
+            pnlTools = new Panel();
+            btnDeleteTask = new nKanban.UI.Controls.ctrlDeleteButton();
+            pnlBoard.SuspendLayout();
+            pnlTools.SuspendLayout();
             SuspendLayout();
             // 
             // btnAddTask
             // 
-            btnAddTask.Location = new Point(60, 12);
+            btnAddTask.Location = new Point(9, 11);
             btnAddTask.Name = "btnAddTask";
             btnAddTask.Size = new Size(78, 46);
             btnAddTask.TabIndex = 0;
@@ -47,38 +53,11 @@
             btnAddTask.UseVisualStyleBackColor = true;
             btnAddTask.Click += btnAddTask_Click;
             // 
-            // pnlToDo
-            // 
-            pnlToDo.BorderStyle = BorderStyle.FixedSingle;
-            pnlToDo.FlowDirection = FlowDirection.TopDown;
-            pnlToDo.Location = new Point(38, 110);
-            pnlToDo.Name = "pnlToDo";
-            pnlToDo.Size = new Size(354, 586);
-            pnlToDo.TabIndex = 1;
-            // 
-            // pnlInProgress
-            // 
-            pnlInProgress.BorderStyle = BorderStyle.FixedSingle;
-            pnlInProgress.FlowDirection = FlowDirection.TopDown;
-            pnlInProgress.Location = new Point(509, 110);
-            pnlInProgress.Name = "pnlInProgress";
-            pnlInProgress.Size = new Size(354, 586);
-            pnlInProgress.TabIndex = 2;
-            // 
-            // pnlDone
-            // 
-            pnlDone.BorderStyle = BorderStyle.FixedSingle;
-            pnlDone.FlowDirection = FlowDirection.TopDown;
-            pnlDone.Location = new Point(990, 110);
-            pnlDone.Name = "pnlDone";
-            pnlDone.Size = new Size(354, 586);
-            pnlDone.TabIndex = 3;
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(166, 68);
+            label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(66, 25);
             label1.TabIndex = 4;
@@ -88,7 +67,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(633, 68);
+            label2.Location = new Point(567, 0);
             label2.Name = "label2";
             label2.Size = new Size(107, 25);
             label2.TabIndex = 5;
@@ -98,39 +77,129 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(1147, 68);
+            label3.Location = new Point(1131, 0);
             label3.Name = "label3";
             label3.Size = new Size(57, 25);
             label3.TabIndex = 6;
             label3.Text = "Done";
             // 
+            // pnlToDo
+            // 
+            pnlToDo.AllowDrop = true;
+            pnlToDo.BorderStyle = BorderStyle.FixedSingle;
+            pnlToDo.Dock = DockStyle.Fill;
+            pnlToDo.FlowDirection = FlowDirection.TopDown;
+            pnlToDo.Location = new Point(10, 52);
+            pnlToDo.Margin = new Padding(10);
+            pnlToDo.Name = "pnlToDo";
+            pnlToDo.Size = new Size(544, 778);
+            pnlToDo.TabIndex = 7;
+            pnlToDo.Tag = "To Do";
+            pnlToDo.Text = "ctrlPanel1";
+            pnlToDo.WrapContents = false;
+            // 
+            // pnlInProgress
+            // 
+            pnlInProgress.AllowDrop = true;
+            pnlInProgress.BorderStyle = BorderStyle.FixedSingle;
+            pnlInProgress.Dock = DockStyle.Fill;
+            pnlInProgress.FlowDirection = FlowDirection.TopDown;
+            pnlInProgress.Location = new Point(574, 52);
+            pnlInProgress.Margin = new Padding(10);
+            pnlInProgress.Name = "pnlInProgress";
+            pnlInProgress.Size = new Size(544, 778);
+            pnlInProgress.TabIndex = 8;
+            pnlInProgress.Tag = "In Progress";
+            pnlInProgress.Text = "ctrlPanel1";
+            pnlInProgress.WrapContents = false;
+            // 
+            // pnlDone
+            // 
+            pnlDone.AllowDrop = true;
+            pnlDone.BorderStyle = BorderStyle.FixedSingle;
+            pnlDone.Dock = DockStyle.Fill;
+            pnlDone.FlowDirection = FlowDirection.TopDown;
+            pnlDone.Location = new Point(1138, 52);
+            pnlDone.Margin = new Padding(10);
+            pnlDone.Name = "pnlDone";
+            pnlDone.Size = new Size(546, 778);
+            pnlDone.TabIndex = 9;
+            pnlDone.Tag = "Done";
+            pnlDone.Text = "ctrlPanel1";
+            pnlDone.WrapContents = false;
+            // 
+            // pnlBoard
+            // 
+            pnlBoard.ColumnCount = 3;
+            pnlBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33333F));
+            pnlBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
+            pnlBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
+            pnlBoard.Controls.Add(pnlDone, 2, 1);
+            pnlBoard.Controls.Add(label3, 2, 0);
+            pnlBoard.Controls.Add(pnlInProgress, 1, 1);
+            pnlBoard.Controls.Add(pnlToDo, 0, 1);
+            pnlBoard.Controls.Add(label1, 0, 0);
+            pnlBoard.Controls.Add(label2, 1, 0);
+            pnlBoard.Dock = DockStyle.Fill;
+            pnlBoard.Location = new Point(0, 71);
+            pnlBoard.Name = "pnlBoard";
+            pnlBoard.RowCount = 2;
+            pnlBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            pnlBoard.RowStyles.Add(new RowStyle(SizeType.Percent, 95F));
+            pnlBoard.Size = new Size(1694, 840);
+            pnlBoard.TabIndex = 10;
+            // 
+            // pnlTools
+            // 
+            pnlTools.Controls.Add(btnDeleteTask);
+            pnlTools.Controls.Add(btnAddTask);
+            pnlTools.Dock = DockStyle.Top;
+            pnlTools.Location = new Point(0, 0);
+            pnlTools.Name = "pnlTools";
+            pnlTools.Size = new Size(1694, 71);
+            pnlTools.TabIndex = 11;
+            // 
+            // btnDeleteTask
+            // 
+            btnDeleteTask.AllowDrop = true;
+            btnDeleteTask.BackgroundImage = (Image)resources.GetObject("btnDeleteTask.BackgroundImage");
+            btnDeleteTask.BackgroundImageLayout = ImageLayout.Center;
+            btnDeleteTask.FlatStyle = FlatStyle.Flat;
+            btnDeleteTask.Location = new Point(105, 11);
+            btnDeleteTask.Name = "btnDeleteTask";
+            btnDeleteTask.Size = new Size(75, 48);
+            btnDeleteTask.TabIndex = 1;
+            btnDeleteTask.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            ClientSize = new Size(1394, 711);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(pnlDone);
-            Controls.Add(pnlInProgress);
-            Controls.Add(pnlToDo);
-            Controls.Add(btnAddTask);
+            ClientSize = new Size(1694, 911);
+            Controls.Add(pnlBoard);
+            Controls.Add(pnlTools);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Main menu";
+            WindowState = FormWindowState.Maximized;
+            pnlBoard.ResumeLayout(false);
+            pnlBoard.PerformLayout();
+            pnlTools.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button btnAddTask;
-        private FlowLayoutPanel pnlToDo;
-        private FlowLayoutPanel pnlInProgress;
-        private FlowLayoutPanel pnlDone;
         private Label label1;
         private Label label2;
         private Label label3;
+        private UI.Controls.ctrlPanel pnlToDo;
+        private UI.Controls.ctrlPanel pnlInProgress;
+        private UI.Controls.ctrlPanel pnlDone;
+        private TableLayoutPanel pnlBoard;
+        private Panel pnlTools;
+        private UI.Controls.ctrlDeleteButton btnDeleteTask;
     }
 }

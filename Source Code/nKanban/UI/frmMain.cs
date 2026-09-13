@@ -1,4 +1,5 @@
 using nKanban.Models;
+using nKanban.UI;
 
 namespace nKanban
 {
@@ -22,14 +23,9 @@ namespace nKanban
 
         private void AddTask(object sender, TaskDetails task)
         {
-            var taskItem = new CheckBox
-            {
-                Text = task.TaskName,
-                AutoSize = true,
-                Tag = task
-            };
+            var taskItem = new ctrlTaskViewer(task);
 
-            switch(task.TaskStatus)
+            switch (task.TaskStatus)
             {
                 case "To Do":
                     pnlToDo.Controls.Add(taskItem);
