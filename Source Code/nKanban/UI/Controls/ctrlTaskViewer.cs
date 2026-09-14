@@ -43,13 +43,10 @@ namespace nKanban.UI
             get { return txtTitle.Text; }
         }
 
-        public ComboBox TaskStatus
+        public string CurrentStatus
         {
-            get { return cbTaskStatus; }
-            set
-            {
-                cbTaskStatus = value;
-            }
+            get { return cbTaskStatus.SelectedItem as string; }
+            set { cbTaskStatus.SelectedItem = value; }
         }
 
         public string TaskDescription
@@ -102,6 +99,16 @@ namespace nKanban.UI
             {
                 this.DoDragDrop(this, DragDropEffects.Move);
             }
+        }
+
+        public TaskDetails ToTaskDetails()
+        {
+            return new TaskDetails()
+            {
+                TaskName = txtTitle.Text,
+                TaskDescription = txtDescription.Text,
+                TaskStatus = CurrentStatus
+            };
         }
 
     }

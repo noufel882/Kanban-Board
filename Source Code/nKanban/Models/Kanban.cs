@@ -1,17 +1,14 @@
 ﻿using nKanban.UI;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace nKanban.Models
 {
     public  class Kanban
     {
-        private Control[] _KanbanLists;
-
+        public Control[] KanbanLists;
+      
         public Kanban(Control[] KanbanLists)
         {               
-            this._KanbanLists = KanbanLists;
+            this.KanbanLists = KanbanLists;
         }
 
         private  static void SelectPanel(ctrlTaskViewer task, Control[] candidateParents)
@@ -20,7 +17,7 @@ namespace nKanban.Models
             {
                 if (parent is null) throw new ArgumentNullException(nameof(parent));
 
-                if (string.Equals(task.TaskStatus.SelectedItem?.ToString(), parent.Tag?.ToString(), StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(task.CurrentStatus, parent.Tag?.ToString(), StringComparison.OrdinalIgnoreCase))
                 {
                     parent.Controls.Add(task);
                     return;
@@ -28,14 +25,43 @@ namespace nKanban.Models
 
             }
 
-            throw new Exception($"Can't match that task status = '{task.TaskStatus.SelectedItem}' with any parent in [{string.Join(", ", candidateParents)}]");
+            throw new Exception($"Can't match that task status = '{task.CurrentStatus}' with any parent in [{string.Join(", ", candidateParents)}]");
         }
 
         public void AddTask(TaskDetails task)
         {
             var taskItem = new ctrlTaskViewer(task);
-            SelectPanel(taskItem, _KanbanLists);
+            SelectPanel(taskItem, KanbanLists);
         }
         
+        public void Clear()
+        {
+            foreach (Control list in this.KanbanLists)
+            {
+                list.Controls.Clear();
+            }
+        }
+
+        public void Save(string filePath)
+        {
+            StorageService.SaveBoardData(this, filePath);
+        }
+
+        public void Load(string filePath)
+        {
+            var tasks = StorageService.LoadBoardData(filePath);
+
+            if (tasks is null || tasks.Count == 0) return;
+
+            this.Clear();
+
+            foreach (var task in tasks)
+            {
+                var taskViewer = new ctrlTaskViewer(task);
+                SelectPanel(taskViewer, KanbanLists);
+            }
+
+        }
+
     }
 }

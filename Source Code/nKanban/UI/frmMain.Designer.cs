@@ -38,7 +38,9 @@
             pnlDone = new nKanban.UI.Controls.ctrlPanel();
             pnlBoard = new TableLayoutPanel();
             pnlTools = new Panel();
+            btnSaveBoard = new Button();
             ctrlDeleteButton1 = new nKanban.UI.Controls.ctrlDeleteButton();
+            btnLoad = new Button();
             pnlBoard.SuspendLayout();
             pnlTools.SuspendLayout();
             SuspendLayout();
@@ -151,6 +153,8 @@
             // 
             // pnlTools
             // 
+            pnlTools.Controls.Add(btnLoad);
+            pnlTools.Controls.Add(btnSaveBoard);
             pnlTools.Controls.Add(ctrlDeleteButton1);
             pnlTools.Controls.Add(btnAddTask);
             pnlTools.Dock = DockStyle.Top;
@@ -159,14 +163,35 @@
             pnlTools.Size = new Size(1694, 71);
             pnlTools.TabIndex = 11;
             // 
+            // btnSaveBoard
+            // 
+            btnSaveBoard.Location = new Point(203, 11);
+            btnSaveBoard.Name = "btnSaveBoard";
+            btnSaveBoard.Size = new Size(78, 46);
+            btnSaveBoard.TabIndex = 2;
+            btnSaveBoard.Text = "Save";
+            btnSaveBoard.UseVisualStyleBackColor = true;
+            btnSaveBoard.Click += btnSaveBoard_Click;
+            // 
             // ctrlDeleteButton1
             // 
+            ctrlDeleteButton1.AllowDrop = true;
             ctrlDeleteButton1.Image = (Image)resources.GetObject("ctrlDeleteButton1.Image");
             ctrlDeleteButton1.Location = new Point(107, 5);
             ctrlDeleteButton1.Name = "ctrlDeleteButton1";
             ctrlDeleteButton1.Size = new Size(60, 60);
             ctrlDeleteButton1.TabIndex = 1;
             ctrlDeleteButton1.UseVisualStyleBackColor = true;
+            // 
+            // btnLoad
+            // 
+            btnLoad.Location = new Point(308, 11);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(78, 46);
+            btnLoad.TabIndex = 3;
+            btnLoad.Text = "Load";
+            btnLoad.UseVisualStyleBackColor = true;
+            btnLoad.Click += btnLoad_Click;
             // 
             // frmMain
             // 
@@ -198,5 +223,7 @@
         private TableLayoutPanel pnlBoard;
         private Panel pnlTools;
         private UI.Controls.ctrlDeleteButton ctrlDeleteButton1;
+        private Button btnSaveBoard;
+        private Button btnLoad;
     }
 }

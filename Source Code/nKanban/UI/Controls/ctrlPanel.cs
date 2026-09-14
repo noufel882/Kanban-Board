@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-
-namespace nKanban.UI.Controls
+﻿namespace nKanban.UI.Controls
 {
     public partial class ctrlPanel : FlowLayoutPanel
     {
+        
         public ctrlPanel()
         {
             InitializeComponent();
@@ -36,9 +29,7 @@ namespace nKanban.UI.Controls
 
             if (e.Data.GetData(typeof(ctrlTaskViewer)) is ctrlTaskViewer task)
             {
-
-                task.TaskStatus.SelectedItem = this.Tag;
-
+                task.CurrentStatus = this.Tag.ToString();
                 this.Controls.Add(task);
             }
         }
