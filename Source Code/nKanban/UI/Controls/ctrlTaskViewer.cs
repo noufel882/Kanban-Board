@@ -1,7 +1,7 @@
 ﻿#pragma warning disable WFO1000
 
 
-using nKanban.Models;
+using nKanban.Models.Dtos;
 using nKanban.Properties;
 
 namespace nKanban.UI
@@ -27,7 +27,7 @@ namespace nKanban.UI
                 }
                 else
                 {
-                    btnContentView.Image = Resources.Arrow_DOWN32;
+                    btnContentView.Image = Resources.Arrow_DOWN_32;
                     lblTitle.Text = null;
                     pnlBody.Visible = true;
                     this.Height = _OriginalSize.Height;
@@ -64,6 +64,7 @@ namespace nKanban.UI
             cbTaskStatus.SelectedItem = details.TaskStatus;
             _OriginalSize = (this.Height, this.Width);
 
+            IsCollapsed = true;
 
             AddChildControlToMouseDownEvent(this);
         }

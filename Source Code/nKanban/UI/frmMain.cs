@@ -1,18 +1,20 @@
-using nKanban.Models;
-using nKanban.UI;
-using static nKanban.Models.Global;
+using nKanban.Models.Dtos;
+using System.Diagnostics;
+using static nKanban.Global;
 
 namespace nKanban
 {
     public partial class frmMain : Form
     {
-
         public frmMain()
         {
             InitializeComponent();
             CurrentBoard = new([pnlToDo, pnlInProgress, pnlDone]);
-        }
 
+            this.Text = "New Board - Empty ";
+
+            this.KeyPreview = true;
+        }
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
@@ -23,15 +25,19 @@ namespace nKanban
             }
         }
 
-
         private void AddTask(object sender, TaskDetails task)
         {
             CurrentBoard.AddTask(task);
         }
 
-
         private void btnSaveBoard_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(CurrentBoard.Path))
+            {
+                CurrentBoard.CommitChanges();
+                return;
+            }
+
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
@@ -46,6 +52,7 @@ namespace nKanban
                     string filePath = saveFileDialog.FileName;
 
                     CurrentBoard.Save(filePath);
+                    this.Text = CurrentBoard.Path;
                 }
             }
         }
@@ -63,10 +70,27 @@ namespace nKanban
                 {
                     string filePath = openFileDialog.FileName;
 
-                    
+
                     CurrentBoard.Load(filePath);
+                    this.Text = CurrentBoard.Path;
                 }
             }
+        }
+
+        private void frmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Control && e.KeyCode == Keys.S)
+            {
+                btnSaveBoard.PerformClick();
+
+                #if DEBUG
+                    Debug.WriteLine($"\nControl pressed : {e.Control} , secondary key : {e.KeyCode}\n");
+                #endif
+
+                e.SuppressKeyPress = true;
+            }
+
+
         }
     }
 }

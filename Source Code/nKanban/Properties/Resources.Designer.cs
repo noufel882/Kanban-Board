@@ -63,9 +63,9 @@ namespace nKanban.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Arrow_DOWN32 {
+        internal static System.Drawing.Bitmap Arrow_DOWN_32 {
             get {
-                object obj = ResourceManager.GetObject("Arrow_DOWN32", resourceCulture);
+                object obj = ResourceManager.GetObject("Arrow_DOWN_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

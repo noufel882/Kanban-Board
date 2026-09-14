@@ -78,7 +78,7 @@
             // 
             btnContentView.Dock = DockStyle.Left;
             btnContentView.FlatStyle = FlatStyle.Flat;
-            btnContentView.Image = Properties.Resources.Arrow_DOWN32;
+            btnContentView.Image = Properties.Resources.Arrow_DOWN_32;
             btnContentView.Location = new Point(0, 0);
             btnContentView.Name = "btnContentView";
             btnContentView.Size = new Size(48, 48);

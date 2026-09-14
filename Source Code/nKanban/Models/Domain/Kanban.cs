@@ -1,11 +1,15 @@
-﻿using nKanban.UI;
+﻿using nKanban.Models.Dtos;
+using nKanban.Services;
+using nKanban.UI;
 
-namespace nKanban.Models
+namespace nKanban.Models.Domain
 {
     public  class Kanban
     {
         public Control[] KanbanLists;
-      
+
+        public string Path { get; set; } = string.Empty;
+
         public Kanban(Control[] KanbanLists)
         {               
             this.KanbanLists = KanbanLists;
@@ -36,6 +40,7 @@ namespace nKanban.Models
         
         public void Clear()
         {
+            this.Path = string.Empty;
             foreach (Control list in this.KanbanLists)
             {
                 list.Controls.Clear();
@@ -45,6 +50,7 @@ namespace nKanban.Models
         public void Save(string filePath)
         {
             StorageService.SaveBoardData(this, filePath);
+            Path = filePath ?? Path;
         }
 
         public void Load(string filePath)
@@ -61,6 +67,13 @@ namespace nKanban.Models
                 SelectPanel(taskViewer, KanbanLists);
             }
 
+            Path = filePath ?? string.Empty;
+        }
+
+
+        public void CommitChanges()
+        {
+            StorageService.SaveBoardData(this, this.Path);
         }
 
     }

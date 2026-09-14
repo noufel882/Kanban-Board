@@ -1,10 +1,12 @@
-﻿using nKanban.UI;
+﻿using nKanban.Models.Domain;
+using nKanban.Models.Dtos;
+using nKanban.UI;
 
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace nKanban.Models
+namespace nKanban.Services
 {
     internal static class StorageService
     {

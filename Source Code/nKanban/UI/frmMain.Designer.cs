@@ -38,9 +38,9 @@
             pnlDone = new nKanban.UI.Controls.ctrlPanel();
             pnlBoard = new TableLayoutPanel();
             pnlTools = new Panel();
+            btnLoad = new Button();
             btnSaveBoard = new Button();
             ctrlDeleteButton1 = new nKanban.UI.Controls.ctrlDeleteButton();
-            btnLoad = new Button();
             pnlBoard.SuspendLayout();
             pnlTools.SuspendLayout();
             SuspendLayout();
@@ -163,11 +163,21 @@
             pnlTools.Size = new Size(1694, 71);
             pnlTools.TabIndex = 11;
             // 
+            // btnLoad
+            // 
+            btnLoad.Location = new Point(333, 12);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(122, 46);
+            btnLoad.TabIndex = 3;
+            btnLoad.Text = "Load";
+            btnLoad.UseVisualStyleBackColor = true;
+            btnLoad.Click += btnLoad_Click;
+            // 
             // btnSaveBoard
             // 
-            btnSaveBoard.Location = new Point(203, 11);
+            btnSaveBoard.Location = new Point(197, 12);
             btnSaveBoard.Name = "btnSaveBoard";
-            btnSaveBoard.Size = new Size(78, 46);
+            btnSaveBoard.Size = new Size(109, 46);
             btnSaveBoard.TabIndex = 2;
             btnSaveBoard.Text = "Save";
             btnSaveBoard.UseVisualStyleBackColor = true;
@@ -183,16 +193,6 @@
             ctrlDeleteButton1.TabIndex = 1;
             ctrlDeleteButton1.UseVisualStyleBackColor = true;
             // 
-            // btnLoad
-            // 
-            btnLoad.Location = new Point(308, 11);
-            btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(78, 46);
-            btnLoad.TabIndex = 3;
-            btnLoad.Text = "Load";
-            btnLoad.UseVisualStyleBackColor = true;
-            btnLoad.Click += btnLoad_Click;
-            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(120F, 120F);
@@ -201,10 +201,12 @@
             Controls.Add(pnlBoard);
             Controls.Add(pnlTools);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Main menu";
             WindowState = FormWindowState.Maximized;
+            KeyDown += frmMain_KeyDown;
             pnlBoard.ResumeLayout(false);
             pnlBoard.PerformLayout();
             pnlTools.ResumeLayout(false);

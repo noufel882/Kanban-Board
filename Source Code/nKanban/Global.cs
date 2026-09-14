@@ -1,8 +1,9 @@
-﻿using System;
+﻿using nKanban.Models.Domain;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace nKanban.Models
+namespace nKanban
 {
     internal class Global
     {

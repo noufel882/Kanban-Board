@@ -1,4 +1,4 @@
-﻿using nKanban.Models;
+﻿using nKanban.Models.Dtos;
 
 namespace nKanban
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace nKanban.Models
+namespace nKanban.Models.Dtos
 {
     public class TaskDetails
     {
