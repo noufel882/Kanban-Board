@@ -40,7 +40,7 @@
             pnlTools = new Panel();
             btnLoad = new Button();
             btnSaveBoard = new Button();
-            ctrlDeleteButton1 = new nKanban.UI.Controls.ctrlDeleteButton();
+            btnDelete = new nKanban.UI.Controls.ctrlDeleteButton();
             pnlBoard.SuspendLayout();
             pnlTools.SuspendLayout();
             SuspendLayout();
@@ -155,7 +155,7 @@
             // 
             pnlTools.Controls.Add(btnLoad);
             pnlTools.Controls.Add(btnSaveBoard);
-            pnlTools.Controls.Add(ctrlDeleteButton1);
+            pnlTools.Controls.Add(btnDelete);
             pnlTools.Controls.Add(btnAddTask);
             pnlTools.Dock = DockStyle.Top;
             pnlTools.Location = new Point(0, 0);
@@ -183,15 +183,16 @@
             btnSaveBoard.UseVisualStyleBackColor = true;
             btnSaveBoard.Click += btnSaveBoard_Click;
             // 
-            // ctrlDeleteButton1
+            // btnDelete
             // 
-            ctrlDeleteButton1.AllowDrop = true;
-            ctrlDeleteButton1.Image = (Image)resources.GetObject("ctrlDeleteButton1.Image");
-            ctrlDeleteButton1.Location = new Point(107, 5);
-            ctrlDeleteButton1.Name = "ctrlDeleteButton1";
-            ctrlDeleteButton1.Size = new Size(60, 60);
-            ctrlDeleteButton1.TabIndex = 1;
-            ctrlDeleteButton1.UseVisualStyleBackColor = true;
+            btnDelete.AllowDrop = true;
+            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
+            btnDelete.Location = new Point(107, 5);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(60, 60);
+            btnDelete.TabIndex = 1;
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.TaskDelete += btnDelete_TaskDelete;
             // 
             // frmMain
             // 
@@ -206,6 +207,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Main menu";
             WindowState = FormWindowState.Maximized;
+            FormClosing += frmMain_FormClosing;
             KeyDown += frmMain_KeyDown;
             pnlBoard.ResumeLayout(false);
             pnlBoard.PerformLayout();
@@ -224,7 +226,7 @@
         private UI.Controls.ctrlPanel pnlDone;
         private TableLayoutPanel pnlBoard;
         private Panel pnlTools;
-        private UI.Controls.ctrlDeleteButton ctrlDeleteButton1;
+        private UI.Controls.ctrlDeleteButton btnDelete;
         private Button btnSaveBoard;
         private Button btnLoad;
     }

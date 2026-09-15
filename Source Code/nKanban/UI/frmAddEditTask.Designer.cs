@@ -1,6 +1,6 @@
 ﻿namespace nKanban
 {
-    partial class frmAddEditTask
+    partial class frmAddTask
     {
         /// <summary>
         /// Required designer variable.
